@@ -1,49 +1,33 @@
-import * as React from "react"
-import { Link, HeadFC, PageProps } from "gatsby"
+import React from 'react';
+import Layout from '../components/Layout';
+import { Container, Button } from 'react-bootstrap';
+import { Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const NotFoundPage: React.FC = () => (
+  <Layout title="404: Not Found">
+    <Helmet>
+      <title>404: Not Found | GroundChain</title>
+    </Helmet>
+    <Container className="text-center mt-5">
+      <div className="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div className="container-fluid py-5">
+          <h1>404: Page Not Found</h1>
+          <p>
+            Oops! Looks like you've hit a block that's not part of our chain.
+          </p>
+          <p>
+            But don't worry, you're not the first one to lose a few tokens in the wild!
+          </p>
+          <p>
+            <Button variant="primary" as={Link} to="/">
+              Back to Home
+            </Button>
+          </p>
+        </div>
+      </div>
+    </Container>
+  </Layout>
+);
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-const NotFoundPage: React.FC<PageProps> = () => {
-  return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
-
-export default NotFoundPage
-
-export const Head: HeadFC = () => <title>Not found</title>
+export default NotFoundPage;

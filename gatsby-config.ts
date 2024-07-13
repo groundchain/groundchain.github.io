@@ -4,7 +4,6 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `GroundChain`,
     siteUrl: `https://groundchain.space`,
-    blocketsUrl: `https://blockets.groundchain.space`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -17,6 +16,7 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sharp", 
     "gatsby-transformer-sharp", 
     "gatsby-plugin-styled-components",
+    "gatsby-plugin-react-helmet",
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -49,7 +49,19 @@ const config: GatsbyConfig = {
           exclude: ["/preview/**", "/do-not-track/me/too/"],
         },
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#000000`,
+        display: `standalone`,
+        icon: `static/icon-16x16.png`, 
+      },
+    },
   ]
 };
 
